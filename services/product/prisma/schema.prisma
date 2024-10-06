@@ -15,7 +15,7 @@ model Product {
   title       String
   description String
   price       Decimal
-  image       String
+  image       String?
 
   @@map("products")
 }
