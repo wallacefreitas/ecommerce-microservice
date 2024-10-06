@@ -28,8 +28,11 @@ export class CreateProduct {
     });
 
     try {
-      await this.productRepository.create(product, async () => {
-        await this.queue.produce('topic-products', product);
+      await this.productRepository.create(product, async (newProduct) => {
+        await this.queue.produce('topic-products', {
+          ...newProduct,
+          status: "created"
+        });
       });
 
       return { 
