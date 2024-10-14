@@ -5,6 +5,10 @@ import { ProductRepository } from "@application/repositories/product-repository"
 export class PrismaProductRepository implements ProductRepository {
   constructor(private prisma = new PrismaClient()) {}
 
+  async findAll(): Promise<ProductDB[]> {
+    return await this.prisma.product.findMany();
+  }
+
   async create(product: Product, callback: (productDB: ProductDB) => Promise<void>): Promise<void> {
     await this.prisma.$transaction(async (tx: Prisma.TransactionClient) => {
       const createdProduct = await tx.product.create({
