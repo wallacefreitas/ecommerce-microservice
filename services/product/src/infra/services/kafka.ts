@@ -7,7 +7,7 @@ export class KafkaService {
   constructor() {
     this.kafka = new Kafka({
       clientId: 'products-events-processor',
-      brokers: ["localhost:9092"]
+      brokers: ["kafka:29092"]
     })
 
     this.consumer = this.kafka.consumer({ 
