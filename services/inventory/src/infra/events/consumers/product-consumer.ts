@@ -1,4 +1,4 @@
-import { createStock } from "@application/use-cases/create-stock";
+import { createStock } from "@application/use-cases/create-inventory";
 import { QueueService } from "@core/interfaces/queue-service";
 
 enum ProductStatus {

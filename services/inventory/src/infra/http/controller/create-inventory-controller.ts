@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import { CreateStock } from "@application/use-cases/create-stock/create-stock";
+import { CreateInventory } from "@application/use-cases/create-inventory/create-inventory";
 
-export class CreateStockController {
-  constructor(private createStockUseCase: CreateStock) {}
+export class CreateInventoryController {
+  constructor(private createInventoryUseCase: CreateInventory) {}
 
   async handle(request: Request, response: Response): Promise<Response> {
     const {
@@ -11,15 +11,15 @@ export class CreateStockController {
     } = request.body;
 
     try {
-      const { stock } = await this.createStockUseCase.execute({
+      const { inventory } = await this.createInventoryUseCase.execute({
         productId,
         quantity
       })
 
       return response.status(201).json({
-        id: stock.id,
-        productId: stock.productId,
-        quantity: stock.quantity
+        id: inventory.id,
+        productId: inventory.productId,
+        quantity: inventory.quantity
       });
 
     } catch(err: any) {

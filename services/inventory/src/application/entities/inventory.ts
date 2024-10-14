@@ -1,13 +1,13 @@
 import { ZodError, z } from "zod";
 import { Entity } from "@core/entities/entity";
 
-export type StockProps = {
+export type InventoryProps = {
   productId: string;
   quantity: number;
 }
 
-export class Stock extends Entity<StockProps>  {
-  static create(props: StockProps, id?: string) {
+export class Inventory extends Entity<InventoryProps>  {
+  static create(props: InventoryProps, id?: string) {
     const schema = z.object({
       productId: z.string().uuid(),
       quantity: z.number(),
@@ -15,7 +15,7 @@ export class Stock extends Entity<StockProps>  {
     
     try {
       const data = schema.parse(props);
-      const product = new Stock({
+      const product = new Inventory({
         ...data
       }, id)
 

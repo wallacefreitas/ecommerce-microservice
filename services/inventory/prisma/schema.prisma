@@ -10,10 +10,10 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Stock {
-  id        String  @id @default(uuid())
+model Inventory {
+  id        String   @id @default(uuid())
   productId String
   quantity  Decimal
-
-  @@map("stocks")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
