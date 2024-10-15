@@ -1,0 +1,29 @@
+services:
+  product:
+    build: 
+      context: .
+      dockerfile: .Dockerfile
+    environment:
+      - PORT=3001
+      - DATABASE_URL=file:./prisma/dev.db
+      - KAFKA_BROKER=kafka:29092
+    ports:
+      - 3001:3001
+    depends_on:
+      - kong
+    networks:
+      - product-network
+      - broker-kafka
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:3001" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    volumes:
+      - ./prisma/dev.db:/app/prisma/dev.db
+
+networks:
+  product-network:
+    name: product-network
+    driver:
+      bridge
