@@ -5,6 +5,14 @@ import { ProductRepository } from "@application/repositories/product-repository"
 export class PrismaProductRepository implements ProductRepository {
   constructor(private prisma = new PrismaClient()) {}
 
+  async findUnique(id: string): Promise<ProductDB> {
+    return await this.prisma.product.findUnique({
+      where: {
+        id
+      }
+    }) || {} as ProductDB;
+  }
+
   async findAll(): Promise<ProductDB[]> {
     return await this.prisma.product.findMany();
   }
