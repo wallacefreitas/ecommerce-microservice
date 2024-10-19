@@ -33,6 +33,20 @@ export class PrismaProductRepository implements ProductRepository {
     });
   }
 
+  async save(product: Product): Promise<void> {
+    await this.prisma.product.update({
+      where: {
+        id: product.id
+      },
+      data: {
+        title: product.title,
+        description: product.description,
+        price: product.price,
+        image: product.image
+      }
+    });
+  }
+
   async remove(id: string, callback: (productDB: ProductDB) => Promise<void>): Promise<void> {
     await this.prisma.$transaction(async (tx: Prisma.TransactionClient) => {
       const removedProduct = await tx.product.delete({

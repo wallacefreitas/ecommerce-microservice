@@ -1,6 +1,7 @@
 import { Router, Request, Response } from "express";
 
 import { createProductController } from "@application/use-cases/create-product";
+import { saveProductController } from "@application/use-cases/save-product";
 import { removeProductController } from "@application/use-cases/remove-product";
 import { findAllProductsController } from "@application/use-cases/find-all-products";
 import { findUniqueProductController } from "@application/use-cases/find-unique-product";
@@ -17,6 +18,10 @@ router.get('/product/:id', (request: Request, response: Response) => {
 
 router.post('/product', (request: Request, response: Response) => {
   createProductController.handle(request, response);
+})
+
+router.put('/product/:id', (request: Request, response: Response) => {
+  saveProductController.handle(request, response);
 })
 
 router.delete('/product/:id', (request: Request, response: Response) => {
