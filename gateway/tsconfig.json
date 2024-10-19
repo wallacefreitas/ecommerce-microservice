@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "lib": ["ES2023", "esnext.asynciterable"],
+    "module": "node16",
+    "target": "ES2022",
+    "baseUrl": "./",
+    "paths": {
+      "@application/*": ["./src/application/*"],
+      "@core/*": ["./src/core/*"],
+      "@infra/*": ["./src/infra/*"],
+    },
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "outDir": "./dist",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  }
+}
