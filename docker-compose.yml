@@ -132,7 +132,7 @@ services:
 
   product:
     extends:
-      file: ./services/product/docker/docker-compose.yml
+      file: ./services/product/docker-compose.yml
       service: product
 
 networks: 
