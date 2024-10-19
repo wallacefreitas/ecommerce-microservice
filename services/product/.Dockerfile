@@ -23,7 +23,6 @@ COPY --from=build /app/prisma ./prisma
 COPY --from=build /app/dist ./dist
 
 COPY .env ./
-# COPY prisma/dev.db /app/prisma/dev.db
 
 RUN yarn install --production
 
