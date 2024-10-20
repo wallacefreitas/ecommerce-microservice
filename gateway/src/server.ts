@@ -18,7 +18,7 @@ async function bootstrap() {
   const { url } = await startStandaloneServer(server, {
     listen: {
       port: 4002
-    }
+    },
   });
 
   console.log(`🚀 Server ready at ${url}`);
