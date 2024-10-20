@@ -1,13 +1,13 @@
 import "reflect-metadata";
 import { ApolloServer } from "@apollo/server";
 import { buildSchema } from "type-graphql";
-import { InventoryResolver } from "./resolvers/inventory-resolver";
+import { ProductResolver } from "./resolvers/product-resolver";
 import { startStandaloneServer } from "@apollo/server/standalone";
 
 async function bootstrap() {
   const schema = await buildSchema({
     resolvers: [
-      InventoryResolver
+      ProductResolver
     ]
   });
 
