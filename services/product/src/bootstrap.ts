@@ -1,4 +1,4 @@
-import { KafkaService } from "@infra/services/kafka";
+import { KafkaService } from "@infra/services/kafka/kafka";
 
 export async function bootstrap() {
   const kafkaService = new KafkaService();

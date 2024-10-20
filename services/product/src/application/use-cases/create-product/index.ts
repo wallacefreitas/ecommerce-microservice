@@ -1,7 +1,7 @@
 import { CreateProductController } from "@infra/http/controller/create-product-controller";
 import { PrismaProductRepository } from "@infra/repositories/prisma/prisma-product-repository";
 import { CreateProduct } from "./create-product";
-import { KafkaService } from "@infra/services/kafka";
+import { KafkaService } from "@infra/services/kafka/kafka";
 
 const prismaProductRepository = new PrismaProductRepository();
 const kafkaService = new KafkaService();
