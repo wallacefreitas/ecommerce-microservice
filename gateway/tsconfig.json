@@ -5,9 +5,8 @@
     "target": "ES2022",
     "baseUrl": "./",
     "paths": {
-      "@application/*": ["./src/application/*"],
-      "@core/*": ["./src/core/*"],
-      "@infra/*": ["./src/infra/*"],
+      "@models/*": ["./src/models/*"],
+      "@helpers/*": ["./src/helpers/*"],
     },
     "resolveJsonModule": true,
     "esModuleInterop": true,
@@ -16,7 +15,11 @@
     "strict": true,
     "skipLibCheck": true,
     "outDir": "./dist",
+    "types": [
+      "vitest/globals"
+    ],
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
-  }
+  },
+  "exclude": ["vitest.config.ts"],
 }
