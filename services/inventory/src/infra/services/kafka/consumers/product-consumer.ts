@@ -1,4 +1,4 @@
-import { createStock } from "@application/use-cases/create-inventory";
+import { createInventory } from "@application/use-cases/create-inventory";
 import { QueueService } from "@core/interfaces/queue-service";
 
 enum ProductStatus {
@@ -11,7 +11,7 @@ export async function consumeProductCreatedEvent(queueService: QueueService) {
     const { id, status } = JSON.parse(message);
 
     if (status === ProductStatus.Created) {
-      createStock.execute({productId: id, quantity: 0});
+      createInventory.execute({productId: id, quantity: 0});
     }
   });
 }
