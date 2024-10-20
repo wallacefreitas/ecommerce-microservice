@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import { router } from './routes';
 import { bootstrap } from './bootstrap';
 
 const app = express();
@@ -7,8 +8,9 @@ const port = 3002;
 
 app.use(express.json());
 app.use(cors());
+app.use('/api/v1', router);
 
-const server = app.listen(port, async () => {
+app.listen(port, async () => {
   bootstrap();
-  console.log(`🚀 Stock service listening on port ${port}`);
+  console.log(`🚀 Inventory service listening on port ${port}`);
 });

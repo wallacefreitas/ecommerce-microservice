@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient, Inventory as InventoryDB } from "@prisma/client";
 import { Inventory } from "@application/entities/inventory";
 import { InventoryRepository } from "@application/repositories/inventory-repository";
 
@@ -13,5 +13,13 @@ export class PrismaInventoryRepository implements InventoryRepository {
         quantity: inventory.quantity
       }
     })
+  }
+
+  async findInventoryByProduct(productId: string): Promise<InventoryDB[]> {
+    return await this.prisma.inventory.findMany({
+      where: {
+        productId
+      }
+    });
   }
 }
