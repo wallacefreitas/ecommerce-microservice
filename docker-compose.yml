@@ -135,6 +135,11 @@ services:
       file: ./services/product/docker-compose.yml
       service: product
 
+  inventory:
+    extends:
+      file: ./services/inventory/docker-compose.yml
+      service: inventory
+
 networks: 
   broker-kafka:
     driver: bridge
@@ -144,6 +149,11 @@ networks:
 
   product-network:
     name: product-network
+    driver:
+      bridge
+
+  inventory-network:
+    name: inventory-network
     driver:
       bridge
 
@@ -157,4 +167,3 @@ volumes:
     driver_opts:
       type: tmpfs
       device: tmpfs
-  product_data: {}
