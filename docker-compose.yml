@@ -130,6 +130,11 @@ services:
     volumes:
       - kong_data:/var/lib/postgresql/data
 
+  gateway:
+    extends:
+      file: ./gateway/docker-compose.yml
+      service: gateway
+
   product:
     extends:
       file: ./services/product/docker-compose.yml
@@ -146,6 +151,11 @@ networks:
 
   kong-net:
     external: false
+
+  gateway-network:
+    name: gateway-network
+    driver:
+      bridge
 
   product-network:
     name: product-network

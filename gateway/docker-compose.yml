@@ -1,0 +1,25 @@
+services:
+  gateway:
+    build: 
+      context: .
+      dockerfile: .Dockerfile
+    environment:
+      - PORT=4002
+    ports:
+      - 4002:4002
+    depends_on:
+      - kong
+    networks:
+      - gateway-network
+      - kong-net
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:4002" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+networks:
+  gateway-network:
+    name: gateway-network
+    driver:
+      bridge
